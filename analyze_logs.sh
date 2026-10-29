@@ -40,9 +40,9 @@ top_ips=$(grep -E -o "^([0-9]{1,3}\.){3}[0-9]{1,3}" "$LOG_FILE" | sort | uniq -c
 error_requests=$(awk '$NF ~ /^[45][0-9][0-9]$/ {count++} END {print count+0}' "$LOG_FILE")
 
 echo "РЕЗУЛЬТАТЫ АНАЛИЗА ЛОГОВ:"
-echo "**Общее количество запросов:** $total_requests"
+echo "Общее количество запросов: $total_requests"
 echo ""
-echo "**Топ-3 IP-адреса:**"
+echo "Топ-3 IP-адреса:"
 echo "$top_ips" | awk '{print "  - IP: " $2 " (Запросов: " $1 ")"}'
 echo ""
-echo "**Количество ошибок (4xx и 5xx):** $error_requests"
+echo "Количество ошибок (4xx и 5xx): $error_requests"
